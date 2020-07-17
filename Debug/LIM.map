@@ -1,0 +1,333 @@
+******************************************************************************
+             TMS320C2000 Linker PC v20.2.0                     
+******************************************************************************
+>> Linked Thu Jul 16 20:24:38 2020
+
+OUTPUT FILE NAME:   <LIM.out>
+ENTRY POINT SYMBOL: "_main"  address: 00000000
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+PAGE 0:
+  BEGIN                 00000000   00000002  00000000  00000002  RWIX
+  M0M1                  00000002   000007fe  00000100  000006fe  RWIX
+  RAMM0                 00000050   000003b0  00000013  0000039d  RWIX
+  RAML0_L3              00008000   00002000  000000a7  00001f59  RWIX
+  RAM1                  00008000   00008000  00000000  00008000  RWIX
+  EXT                   00100000   002e0000  00000000  002e0000  RWIX
+  FPUTABLES             003fd860   000006a0  00000000  000006a0  RWIX
+  IQTABLES              003fdf00   00000b50  00000b50  00000000  RWIX
+  IQTABLES2             003fea50   0000008c  00000000  0000008c  RWIX
+  IQTABLES3             003feadc   000000aa  00000000  000000aa  RWIX
+  BOOTROM               003ff3b0   00000c10  00000000  00000c10  RWIX
+  RESET                 003fffc0   00000002  00000000  00000002  RWIX
+  VECTORS               003fffc0   00000040  00000000  00000040  R   
+
+PAGE 1:
+  BOOT_RSVD             00000002   0000004e  00000000  0000004e  RWIX
+  RAMM1                 00000400   00000400  00000000  00000400  RWIX
+  RAML4                 0000a000   00002000  0000001f  00001fe1  RWIX
+  RAML5                 0000c000   00002000  00000000  00002000  RWIX
+  RAML6                 0000e000   00002000  00000000  00002000  RWIX
+  RAML7                 00010000   00002000  00000000  00002000  RWIX
+  RAML8                 00012000   00002000  00000000  00002000  RWIX
+  USB_RAM               00040000   00000800  00000000  00000800  RWIX
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.cinit     0    00000050    00000013     
+                  00000050    00000011     main.obj (.cinit)
+                  00000061    00000002     --HOLE-- [fill = 0]
+
+.text      0    00008000    00000060     
+                  00008000    00000060     main.obj (.text:retain)
+
+.pinit     0    00000050    00000000     UNINITIALIZED
+
+.reset     0    003fffc0    00000000     DSECT
+
+.ebss      1    0000a000    00000012     UNINITIALIZED
+                  0000a000    00000012     main.obj (.ebss)
+
+.econst    1    0000a012    0000000d     
+                  0000a012    0000000d     main.obj (.econst:.string)
+
+IQmath     0    00008060    00000047     
+                  00008060    00000047     IQmath.lib : IQ24div.obj (IQmath)
+
+IQmathTables 
+*          0    003fdf00    00000b50     NOLOAD SECTION
+                  003fdf00    00000b50     IQmath.lib : IQmathTables.obj (IQmathTables)
+
+.binit     0    00100000    00000000     
+
+.cinit     0    00100000    00000000     UNINITIALIZED
+
+.pinit     0    00100000    00000000     UNINITIALIZED
+
+.args      0    00000004    00000100     
+                  00000004    00000100     --HOLE-- [fill = 0]
+
+.bss       0    00000002    00000000     UNINITIALIZED
+
+.data      0    00000002    00000000     UNINITIALIZED
+
+MODULE SUMMARY
+
+       Module             code   initialized data   uninitialized data
+       ------             ----   ----------------   ------------------
+    .\
+       main.obj           96     30                 18                
+    +--+------------------+------+------------------+--------------------+
+       Total:             96     30                 18                
+                                                                      
+    ../IQmath.lib
+       IQmathTables.obj   0      2896               0                 
+       IQ24div.obj        0      71                 0                 
+    +--+------------------+------+------------------+--------------------+
+       Total:             0      2967               0                 
+                                                                      
+    +--+------------------+------+------------------+--------------------+
+       Grand Total:       96     2997               18                
+
+
+GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
+
+address     data page           name
+--------    ----------------    ----
+00008060     201 (00008040)     __IQ24div
+
+0000a000     280 (0000a000)     _vhz1
+
+003fdf00    ff7c (003fdf00)     _IQsinTable
+
+003fe000    ff80 (003fe000)     _IQcosTable
+
+003fe300    ff8c (003fe300)     _IQsinTableEnd
+
+003fe402    ff90 (003fe400)     _IQcosTableEnd
+003fe402    ff90 (003fe400)     _IQdivRoundSatTable
+003fe410    ff90 (003fe400)     _IQdivTable
+
+003fe612    ff98 (003fe600)     _IQdivTableEnd
+003fe612    ff98 (003fe600)     _IQisqrtRoundSatTable
+003fe612    ff98 (003fe600)     _IQsqrtRoundSatTable
+003fe622    ff98 (003fe600)     _IQisqrtTable
+003fe622    ff98 (003fe600)     _IQsqrtTable
+
+003fe724    ff9c (003fe700)     _IQatan2HalfPITable
+003fe724    ff9c (003fe700)     _IQisqrtTableEnd
+003fe724    ff9c (003fe700)     _IQsqrtTableEnd
+
+003fe762    ff9d (003fe740)     _IQatan2Table
+
+003fe8e8    ffa3 (003fe8c0)     _IQ30mpyRndSatTable
+003fe8e8    ffa3 (003fe8c0)     _IQatan2TableEnd
+003fe8e8    ffa3 (003fe8c0)     _IQmpyRndSatTable
+003fe8f4    ffa3 (003fe8c0)     _IQ29mpyRndSatTable
+
+003fe900    ffa4 (003fe900)     _IQ28mpyRndSatTable
+003fe90c    ffa4 (003fe900)     _IQ27mpyRndSatTable
+003fe918    ffa4 (003fe900)     _IQ26mpyRndSatTable
+003fe924    ffa4 (003fe900)     _IQ25mpyRndSatTable
+003fe930    ffa4 (003fe900)     _IQ24mpyRndSatTable
+003fe93c    ffa4 (003fe900)     _IQ23mpyRndSatTable
+
+003fe948    ffa5 (003fe940)     _IQ22mpyRndSatTable
+003fe954    ffa5 (003fe940)     _IQ21mpyRndSatTable
+003fe960    ffa5 (003fe940)     _IQ20mpyRndSatTable
+003fe96c    ffa5 (003fe940)     _IQ19mpyRndSatTable
+003fe978    ffa5 (003fe940)     _IQ18mpyRndSatTable
+
+003fe984    ffa6 (003fe980)     _IQ17mpyRndSatTable
+003fe990    ffa6 (003fe980)     _IQ16mpyRndSatTable
+003fe99c    ffa6 (003fe980)     _IQ15mpyRndSatTable
+003fe9a8    ffa6 (003fe980)     _IQ14mpyRndSatTable
+003fe9b4    ffa6 (003fe980)     _IQ13mpyRndSatTable
+
+003fe9c0    ffa7 (003fe9c0)     _IQ12mpyRndSatTable
+003fe9cc    ffa7 (003fe9c0)     _IQ11mpyRndSatTable
+003fe9d8    ffa7 (003fe9c0)     _IQ10mpyRndSatTable
+003fe9e4    ffa7 (003fe9c0)     _IQ9mpyRndSatTable
+003fe9f0    ffa7 (003fe9c0)     _IQ8mpyRndSatTable
+003fe9fc    ffa7 (003fe9c0)     _IQ7mpyRndSatTable
+
+003fea08    ffa8 (003fea00)     _IQ6mpyRndSatTable
+003fea14    ffa8 (003fea00)     _IQ5mpyRndSatTable
+003fea20    ffa8 (003fea00)     _IQ4mpyRndSatTable
+003fea2c    ffa8 (003fea00)     _IQ3mpyRndSatTable
+003fea38    ffa8 (003fea00)     _IQ2mpyRndSatTable
+
+003fea44    ffa9 (003fea40)     _IQ1mpyRndSatTable
+003fea50    ffa9 (003fea40)     _IQmpyRndSatTableEnd
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+page  address   name                   
+----  -------   ----                   
+abs   ffffffff  .bss                   
+abs   ffffffff  .data                  
+0     00008000  .text                  
+0     003fe9d8  _IQ10mpyRndSatTable    
+0     003fe9cc  _IQ11mpyRndSatTable    
+0     003fe9c0  _IQ12mpyRndSatTable    
+0     003fe9b4  _IQ13mpyRndSatTable    
+0     003fe9a8  _IQ14mpyRndSatTable    
+0     003fe99c  _IQ15mpyRndSatTable    
+0     003fe990  _IQ16mpyRndSatTable    
+0     003fe984  _IQ17mpyRndSatTable    
+0     003fe978  _IQ18mpyRndSatTable    
+0     003fe96c  _IQ19mpyRndSatTable    
+0     003fea44  _IQ1mpyRndSatTable     
+0     003fe960  _IQ20mpyRndSatTable    
+0     003fe954  _IQ21mpyRndSatTable    
+0     003fe948  _IQ22mpyRndSatTable    
+0     003fe93c  _IQ23mpyRndSatTable    
+0     003fe930  _IQ24mpyRndSatTable    
+0     003fe924  _IQ25mpyRndSatTable    
+0     003fe918  _IQ26mpyRndSatTable    
+0     003fe90c  _IQ27mpyRndSatTable    
+0     003fe900  _IQ28mpyRndSatTable    
+0     003fe8f4  _IQ29mpyRndSatTable    
+0     003fea38  _IQ2mpyRndSatTable     
+0     003fe8e8  _IQ30mpyRndSatTable    
+0     003fea2c  _IQ3mpyRndSatTable     
+0     003fea20  _IQ4mpyRndSatTable     
+0     003fea14  _IQ5mpyRndSatTable     
+0     003fea08  _IQ6mpyRndSatTable     
+0     003fe9fc  _IQ7mpyRndSatTable     
+0     003fe9f0  _IQ8mpyRndSatTable     
+0     003fe9e4  _IQ9mpyRndSatTable     
+0     003fe724  _IQatan2HalfPITable    
+0     003fe762  _IQatan2Table          
+0     003fe8e8  _IQatan2TableEnd       
+0     003fe000  _IQcosTable            
+0     003fe402  _IQcosTableEnd         
+0     003fe402  _IQdivRoundSatTable    
+0     003fe410  _IQdivTable            
+0     003fe612  _IQdivTableEnd         
+0     003fe612  _IQisqrtRoundSatTable  
+0     003fe622  _IQisqrtTable          
+0     003fe724  _IQisqrtTableEnd       
+0     003fe8e8  _IQmpyRndSatTable      
+0     003fea50  _IQmpyRndSatTableEnd   
+0     003fdf00  _IQsinTable            
+0     003fe300  _IQsinTableEnd         
+0     003fe612  _IQsqrtRoundSatTable   
+0     003fe622  _IQsqrtTable           
+0     003fe724  _IQsqrtTableEnd        
+0     00008060  __IQ24div              
+abs   ffffffff  ___TI_pprof_out_hndl   
+abs   ffffffff  ___TI_prof_data_size   
+abs   ffffffff  ___TI_prof_data_start  
+abs   ffffffff  ___binit__             
+abs   ffffffff  ___bss__               
+0     00000004  ___c_args__            
+0     00000050  ___cinit__             
+abs   ffffffff  ___data__              
+abs   ffffffff  ___edata__             
+abs   ffffffff  ___end__               
+0     00008060  ___etext__             
+abs   ffffffff  ___pinit__             
+0     00008000  ___text__              
+n/a   UNDEFED   _c_int00               
+0     00008000  _periodic_interrupt_isr
+n/a   UNDEFED   _printf                
+1     0000a000  _vhz1                  
+abs   ffffffff  binit                  
+0     00000050  cinit                  
+abs   ffffffff  edata                  
+abs   ffffffff  end                    
+0     00008060  etext                  
+abs   ffffffff  pinit                  
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+page  address   name                   
+----  -------   ----                   
+0     00000004  ___c_args__            
+0     00000050  ___cinit__             
+0     00000050  cinit                  
+0     00008000  .text                  
+0     00008000  ___text__              
+0     00008000  _periodic_interrupt_isr
+0     00008060  __IQ24div              
+0     00008060  ___etext__             
+0     00008060  etext                  
+0     003fdf00  _IQsinTable            
+0     003fe000  _IQcosTable            
+0     003fe300  _IQsinTableEnd         
+0     003fe402  _IQcosTableEnd         
+0     003fe402  _IQdivRoundSatTable    
+0     003fe410  _IQdivTable            
+0     003fe612  _IQdivTableEnd         
+0     003fe612  _IQisqrtRoundSatTable  
+0     003fe612  _IQsqrtRoundSatTable   
+0     003fe622  _IQisqrtTable          
+0     003fe622  _IQsqrtTable           
+0     003fe724  _IQatan2HalfPITable    
+0     003fe724  _IQisqrtTableEnd       
+0     003fe724  _IQsqrtTableEnd        
+0     003fe762  _IQatan2Table          
+0     003fe8e8  _IQ30mpyRndSatTable    
+0     003fe8e8  _IQatan2TableEnd       
+0     003fe8e8  _IQmpyRndSatTable      
+0     003fe8f4  _IQ29mpyRndSatTable    
+0     003fe900  _IQ28mpyRndSatTable    
+0     003fe90c  _IQ27mpyRndSatTable    
+0     003fe918  _IQ26mpyRndSatTable    
+0     003fe924  _IQ25mpyRndSatTable    
+0     003fe930  _IQ24mpyRndSatTable    
+0     003fe93c  _IQ23mpyRndSatTable    
+0     003fe948  _IQ22mpyRndSatTable    
+0     003fe954  _IQ21mpyRndSatTable    
+0     003fe960  _IQ20mpyRndSatTable    
+0     003fe96c  _IQ19mpyRndSatTable    
+0     003fe978  _IQ18mpyRndSatTable    
+0     003fe984  _IQ17mpyRndSatTable    
+0     003fe990  _IQ16mpyRndSatTable    
+0     003fe99c  _IQ15mpyRndSatTable    
+0     003fe9a8  _IQ14mpyRndSatTable    
+0     003fe9b4  _IQ13mpyRndSatTable    
+0     003fe9c0  _IQ12mpyRndSatTable    
+0     003fe9cc  _IQ11mpyRndSatTable    
+0     003fe9d8  _IQ10mpyRndSatTable    
+0     003fe9e4  _IQ9mpyRndSatTable     
+0     003fe9f0  _IQ8mpyRndSatTable     
+0     003fe9fc  _IQ7mpyRndSatTable     
+0     003fea08  _IQ6mpyRndSatTable     
+0     003fea14  _IQ5mpyRndSatTable     
+0     003fea20  _IQ4mpyRndSatTable     
+0     003fea2c  _IQ3mpyRndSatTable     
+0     003fea38  _IQ2mpyRndSatTable     
+0     003fea44  _IQ1mpyRndSatTable     
+0     003fea50  _IQmpyRndSatTableEnd   
+1     0000a000  _vhz1                  
+abs   ffffffff  .bss                   
+abs   ffffffff  .data                  
+abs   ffffffff  ___TI_pprof_out_hndl   
+abs   ffffffff  ___TI_prof_data_size   
+abs   ffffffff  ___TI_prof_data_start  
+abs   ffffffff  ___binit__             
+abs   ffffffff  ___bss__               
+abs   ffffffff  ___data__              
+abs   ffffffff  ___edata__             
+abs   ffffffff  ___end__               
+abs   ffffffff  ___pinit__             
+abs   ffffffff  binit                  
+abs   ffffffff  edata                  
+abs   ffffffff  end                    
+abs   ffffffff  pinit                  
+n/a   UNDEFED   _c_int00               
+n/a   UNDEFED   _printf                
+
+[75 symbols]
